@@ -77,6 +77,50 @@ export type Database = {
         }
         Relationships: []
       }
+      versions: {
+        Row: {
+          commit_message: string | null
+          created_at: string | null
+          css: string
+          html: string
+          id: string
+          js: string
+          project_id: string
+          user_id: string | null
+          version_number: number
+        }
+        Insert: {
+          commit_message?: string | null
+          created_at?: string | null
+          css: string
+          html: string
+          id?: string
+          js: string
+          project_id: string
+          user_id?: string | null
+          version_number: number
+        }
+        Update: {
+          commit_message?: string | null
+          created_at?: string | null
+          css?: string
+          html?: string
+          id?: string
+          js?: string
+          project_id?: string
+          user_id?: string | null
+          version_number?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "versions_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
